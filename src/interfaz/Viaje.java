@@ -76,6 +76,11 @@ public class Viaje extends javax.swing.JFrame {
         jPanel1.add(cmdCalcular, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 270, -1, -1));
 
         cmdRestaurar.setText("Restaurar");
+        cmdRestaurar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmdRestaurarActionPerformed(evt);
+            }
+        });
         jPanel1.add(cmdRestaurar, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 270, -1, -1));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 460, 320));
@@ -97,6 +102,16 @@ public class Viaje extends javax.swing.JFrame {
         lblT.setText(r);
         
     }//GEN-LAST:event_cmdCalcularActionPerformed
+
+    private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
+
+        txtND.setText("");
+        txtNP.setText("");
+        lblT.setText("");
+        txtND.requestFocusInWindow();
+        
+        
+    }//GEN-LAST:event_cmdRestaurarActionPerformed
 
     /**
      * @param args the command line arguments
