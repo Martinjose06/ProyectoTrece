@@ -5,6 +5,9 @@
  */
 package interfaz;
 
+import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author LUCYLEONOR
@@ -55,7 +58,25 @@ public class Viaje extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
         jLabel3.setText("Núm. Dias");
         jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 80, -1, -1));
+
+        txtNP.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNPKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNPKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtNP, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 80, 70, -1));
+
+        txtND.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNDKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtNDKeyTyped(evt);
+            }
+        });
         jPanel1.add(txtND, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 80, 70, -1));
 
         jLabel4.setFont(new java.awt.Font("Times New Roman", 0, 14)); // NOI18N
@@ -90,17 +111,37 @@ public class Viaje extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-        String r;
-        double nd, np, t;
-        
-        nd = Double.parseDouble(txtND.getText());
-        np = Double.parseDouble(txtNP.getText());
-        
-        t = ((25000 * nd) * np) * 1.12;
-        
-        r = String.valueOf(t);
-        lblT.setText(r);
-        
+         if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Días", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+            } else if (txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Personas", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Días Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+                txtND.selectAll();
+            } else if (txtNP.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+                txtNP.selectAll();
+            }
+            else{
+            String r;
+            int np;
+            double nd, t;
+
+            nd = Double.parseDouble(txtND.getText());
+            np = Integer.parseInt(txtNP.getText());
+
+            t = ((25000 * nd) * np) * 1.12;
+
+            r = String.valueOf(t);
+            lblT.setText("$ " + r);
+            }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
@@ -108,10 +149,104 @@ public class Viaje extends javax.swing.JFrame {
         txtND.setText("");
         txtNP.setText("");
         lblT.setText("");
-        txtND.requestFocusInWindow();
-        
-        
+        txtNP.requestFocusInWindow();
+
+
     }//GEN-LAST:event_cmdRestaurarActionPerformed
+
+    private void txtNPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNPKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNPKeyTyped
+
+    private void txtNDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNDKeyTyped
+        char c = evt.getKeyChar();
+
+        if (!Character.isDigit(c) && evt.getKeyCode() == KeyEvent.VK_ENTER) {
+            getToolkit().beep();
+            evt.consume();
+        }
+    }//GEN-LAST:event_txtNDKeyTyped
+
+    private void txtNPKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNPKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+                if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Días", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+            } else if (txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Personas", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Días Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+                txtND.selectAll();
+            } else if (txtNP.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+                txtNP.selectAll();
+            }
+            else{
+            String r;
+            int np;
+            double nd, t;
+
+            nd = Double.parseDouble(txtND.getText());
+            np = Integer.parseInt(txtNP.getText());
+
+            t = ((25000 * nd) * np) * 1.12;
+
+            r = String.valueOf(t);
+            lblT.setText("$ " + r);
+            }
+        }
+    }//GEN-LAST:event_txtNPKeyPressed
+
+    private void txtNDKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNDKeyPressed
+
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+
+                if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Días", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+            } else if (txtNP.getText().trim().isEmpty()) {
+                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Personas", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+            } else if (txtND.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Días Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtND.requestFocusInWindow();
+                txtND.selectAll();
+            } else if (txtNP.getText().equalsIgnoreCase("0")) {
+                JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+                txtNP.requestFocusInWindow();
+                txtNP.selectAll();
+            }
+            else{
+            String r;
+            int np;
+            double nd, t;
+
+            nd = Double.parseDouble(txtND.getText());
+            np = Integer.parseInt(txtNP.getText());
+
+            t = ((25000 * nd) * np) * 1.12;
+
+            r = String.valueOf(t);
+            lblT.setText("$ " + r);
+            }
+        }
+    }//GEN-LAST:event_txtNDKeyPressed
 
     /**
      * @param args the command line arguments
