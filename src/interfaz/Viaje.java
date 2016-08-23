@@ -111,25 +111,24 @@ public class Viaje extends javax.swing.JFrame {
 
     private void cmdCalcularActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdCalcularActionPerformed
 
-         if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtNP.requestFocusInWindow();
-            } else if (txtND.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Días", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtND.requestFocusInWindow();
-            } else if (txtNP.getText().trim().isEmpty()) {
-                JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Personas", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtNP.requestFocusInWindow();
-            } else if (txtND.getText().equalsIgnoreCase("0")) {
-                JOptionPane.showMessageDialog(this, "El Numero De Días Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtND.requestFocusInWindow();
-                txtND.selectAll();
-            } else if (txtNP.getText().equalsIgnoreCase("0")) {
-                JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
-                txtNP.requestFocusInWindow();
-                txtNP.selectAll();
-            }
-            else{
+        if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtNP.requestFocusInWindow();
+        } else if (txtND.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Días", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtND.requestFocusInWindow();
+        } else if (txtNP.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "No Ingresó El Numero De Personas", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtNP.requestFocusInWindow();
+        } else if (txtND.getText().equalsIgnoreCase("0")) {
+            JOptionPane.showMessageDialog(this, "El Numero De Días Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtND.requestFocusInWindow();
+            txtND.selectAll();
+        } else if (txtNP.getText().equalsIgnoreCase("0")) {
+            JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
+            txtNP.requestFocusInWindow();
+            txtNP.selectAll();
+        } else {
             String r;
             int np;
             double nd, t;
@@ -141,7 +140,7 @@ public class Viaje extends javax.swing.JFrame {
 
             r = String.valueOf(t);
             lblT.setText("$ " + r);
-            }
+        }
     }//GEN-LAST:event_cmdCalcularActionPerformed
 
     private void cmdRestaurarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmdRestaurarActionPerformed
@@ -157,7 +156,7 @@ public class Viaje extends javax.swing.JFrame {
     private void txtNPKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNPKeyTyped
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (!Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
         }
@@ -166,7 +165,7 @@ public class Viaje extends javax.swing.JFrame {
     private void txtNDKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNDKeyTyped
         char c = evt.getKeyChar();
 
-        if (!Character.isDigit(c) && evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (!Character.isDigit(c)) {
             getToolkit().beep();
             evt.consume();
         }
@@ -176,7 +175,7 @@ public class Viaje extends javax.swing.JFrame {
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+            if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtNP.requestFocusInWindow();
             } else if (txtND.getText().trim().isEmpty()) {
@@ -193,19 +192,18 @@ public class Viaje extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtNP.requestFocusInWindow();
                 txtNP.selectAll();
-            }
-            else{
-            String r;
-            int np;
-            double nd, t;
+            } else {
+                String r;
+                int np;
+                double nd, t;
 
-            nd = Double.parseDouble(txtND.getText());
-            np = Integer.parseInt(txtNP.getText());
+                nd = Double.parseDouble(txtND.getText());
+                np = Integer.parseInt(txtNP.getText());
 
-            t = ((25000 * nd) * np) * 1.12;
+                t = ((25000 * nd) * np) * 1.12;
 
-            r = String.valueOf(t);
-            lblT.setText("$ " + r);
+                r = String.valueOf(t);
+                lblT.setText("$ " + r);
             }
         }
     }//GEN-LAST:event_txtNPKeyPressed
@@ -214,7 +212,7 @@ public class Viaje extends javax.swing.JFrame {
 
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
 
-                if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
+            if (txtND.getText().trim().isEmpty() && txtNP.getText().trim().isEmpty()) {
                 JOptionPane.showMessageDialog(this, "No Ingresó Los Datos Solicitados", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtNP.requestFocusInWindow();
             } else if (txtND.getText().trim().isEmpty()) {
@@ -231,19 +229,18 @@ public class Viaje extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "El Numero De Personas Debe Ser Superior A 0", "ERROR", JOptionPane.ERROR_MESSAGE);
                 txtNP.requestFocusInWindow();
                 txtNP.selectAll();
-            }
-            else{
-            String r;
-            int np;
-            double nd, t;
+            } else {
+                String r;
+                int np;
+                double nd, t;
 
-            nd = Double.parseDouble(txtND.getText());
-            np = Integer.parseInt(txtNP.getText());
+                nd = Double.parseDouble(txtND.getText());
+                np = Integer.parseInt(txtNP.getText());
 
-            t = ((25000 * nd) * np) * 1.12;
+                t = ((25000 * nd) * np) * 1.12;
 
-            r = String.valueOf(t);
-            lblT.setText("$ " + r);
+                r = String.valueOf(t);
+                lblT.setText("$ " + r);
             }
         }
     }//GEN-LAST:event_txtNDKeyPressed
